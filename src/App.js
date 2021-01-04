@@ -1,32 +1,25 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = { message: '' };
-  }
+import Header from './components/Header/Header';
 
-  componentDidMount() {
-    fetch('/api/message')
-      .then(response => response.json())
-      .then(json => this.setState({ message: json }));
-  }
+import HomePage from './pages/HomePage/HomePage';
+import LoginPage from './pages/LoginPage/LoginPage';
 
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>{this.state.message}</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+const App = () => {
+  return (
+    <Router>
+      <div>
+        {/*Header is displayed on every page for user navigation*/}
+        <Header/>
+        <Switch>
+          <Route path="/" exact component={HomePage}/>
+          <Route path="/login" component={LoginPage}/>
+        </Switch>
       </div>
-    );
-  }
+    </Router>
+  )
 }
 
 export default App;

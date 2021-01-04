@@ -1,0 +1,36 @@
+import styled from 'styled-components';
+
+import { Link } from 'react-router-dom';
+
+export const Wrapper = styled.div `
+    display: flex;
+`;
+
+export const Header = styled.header `
+    flex: 1;
+    align-self: center;
+`;
+
+export const Navigation = styled.nav `
+    display: flex;
+    justify-content: space-around;
+    background-color: #333;
+    flex-wrap: wrap;
+
+    @media (max-width: 1024px) {
+        flex-direction: column;
+    }
+`;
+
+export const StyledLink = styled(Link)
+`
+    padding: 12px;
+    text-decoration: none;
+    color: #CDCDCD;
+`;
+
+export const Icon = styled.i `
+    align-self: 'flex-end'; 
+    color: 'white';
+    padding: 10px;
+`;
