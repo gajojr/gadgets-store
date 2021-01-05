@@ -1,30 +1,31 @@
 {
-  "name": "express-react-starter",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "cookie-parser": "^1.4.3",
-    "debug": "^2.6.9",
-    "express": "^4.17.1",
-    "jade": "^1.11.0",
-    "morgan": "^1.10.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-icons": "^4.1.0",
-    "react-router-dom": "^5.2.0",
-    "styled-components": "^5.2.1"
-  },
-  "devDependencies": {
-    "concurrently": "^3.5.0",
-    "nodemon": "^1.12.0",
-    "react-scripts": "1.0.10"
-  },
-  "scripts": {
-    "start": "concurrently \"react-scripts start\" \"nodemon server/server.js\"",
-    "build": "react-scripts build && mv build server",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "proxy": "http://localhost:3001"
+    "name": "express-react-starter",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "cookie-parser": "^1.4.3",
+        "debug": "^2.6.9",
+        "eslint": "^5.16.0",
+        "express": "^4.17.1",
+        "jade": "^1.11.0",
+        "morgan": "^1.10.0",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "react-icons": "^4.1.0",
+        "react-router-dom": "^5.2.0",
+        "styled-components": "^5.2.1"
+    },
+    "devDependencies": {
+        "concurrently": "^3.5.0",
+        "nodemon": "^1.12.0",
+        "react-scripts": "1.0.10"
+    },
+    "scripts": {
+        "start": "concurrently \"react-scripts start\" \"nodemon server/server.js\"",
+        "build": "react-scripts build && mv build server",
+        "test": "react-scripts test --env=jsdom",
+        "eject": "react-scripts eject"
+    },
+    "proxy": "http://localhost:3001"
 }

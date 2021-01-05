@@ -27,6 +27,12 @@ export const StyledLink = styled(Link)
     padding: 12px;
     text-decoration: none;
     color: #CDCDCD;
+    transition: all .6s;
+
+    &:hover {
+        filter: brightness(1.75);
+        transform: scale(1.2);
+    }
 `;
 
 export const Icon = styled.i `

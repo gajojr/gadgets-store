@@ -1,8 +1,17 @@
 import React from 'react';
+import * as StyledComponents from './HomePage.styles';
+
+import MainSection from '../../components/HomePage/MainSection/MainSection';
+import FooterSection from '../../components/HomePage/Footer/FooterSection';
 
 const HomePage = () => {
     return (
-        <h1>This is home page component</h1>
+        <React.Fragment>
+            <StyledComponents.Main>
+                <MainSection/>
+            </StyledComponents.Main>
+            <FooterSection/>
+        </React.Fragment>
     );
 }
 
