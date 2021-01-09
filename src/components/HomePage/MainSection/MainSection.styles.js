@@ -28,7 +28,7 @@ export const Image = styled.img `
     transition: 1s;
 
     &:hover {
-        transform: scale(1.1) rotate(5deg);
+        transform: scale(1.1);
     }
 `;
 

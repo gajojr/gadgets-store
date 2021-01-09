@@ -14,7 +14,7 @@ const Header = () => {
                     <StyledComponents.Navigation>
                         <StyledComponents.StyledLink to="#">MASKICE</StyledComponents.StyledLink>
                         <StyledComponents.StyledLink to="#">NARUKVICE</StyledComponents.StyledLink>
-                        <StyledComponents.StyledLink to="#">SLUSALICE</StyledComponents.StyledLink>
+                        <StyledComponents.StyledLink to='/slusalice'>SLUSALICE</StyledComponents.StyledLink>
                         <StyledComponents.StyledLink to="#">DZOJSTICI</StyledComponents.StyledLink>
                         <StyledComponents.StyledLink to="#">PUNJACI</StyledComponents.StyledLink>
                         {document.body.clientWidth < 1025 ? 
