@@ -1,6 +1,8 @@
 import React from 'react';
 
-import * as StyledComponents from './Katalog.styles';
+import { Container, H1, Catalog } from './Katalog.styles';
+
+import Article from './Article.component';
 
 const dummyData = new Array(10).fill({
         imgSrc: '/images/glavna_strana/headphones-demo.webp',
@@ -15,21 +17,12 @@ const Katalog = () => {
     document.title = 'Slusalice';
 
     return (
-        <StyledComponents.Container>
-            <StyledComponents.H1>Katalog</StyledComponents.H1>
-            <StyledComponents.Katalog>{dummyData.map((earphones, idx) => {
-                return (
-                    <StyledComponents.Proizvod key={idx}>
-                        <StyledComponents.Image src={earphones.imgSrc} alt={earphones.model}/>
-                        <StyledComponents.H4>Proizvodjac: {earphones.proizvodjac}</StyledComponents.H4>
-                        <StyledComponents.H4>Model: {earphones.model}</StyledComponents.H4>
-                        <StyledComponents.H4>Tip: {earphones.tip}</StyledComponents.H4>
-                        <StyledComponents.H4>Trajanje baterije: {earphones.trajanjeBaterije}</StyledComponents.H4>
-                        <StyledComponents.H4>Cena: {earphones.cena}</StyledComponents.H4>
-                    </StyledComponents.Proizvod>
-                );
-            })}</StyledComponents.Katalog>
-        </StyledComponents.Container>
+        <Container>
+            <H1>Katalog</H1>
+            <Catalog>{dummyData.map((earphones, idx) => {
+                return <Article key={idx} details={earphones}/>
+            })}</Catalog>
+        </Container>
     );
 }
 

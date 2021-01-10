@@ -5,7 +5,7 @@ export const Container = styled.div `
     flex-direction: column;
 `;
 
-export const Katalog = styled.section `
+export const Catalog = styled.section `
     display: flex;
     flex-wrap: wrap;
 `;
