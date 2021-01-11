@@ -5,16 +5,16 @@ import { Container, H1, Catalog } from '../../KatalogStyles/Katalog.styles';
 import Article from './Article.component';
 
 const dummyData = new Array(12).fill({
-        imgSrc: '/images/glavna_strana/headphones-demo.webp',
-        proizvodjac: "Samsung",
-        model: "Galaxy Buds",
+        imgSrc: '/images/glavna_strana/smart-bracelet-demo.jpg',
+        proizvodjac: "Fushara",
+        model: "Njesra",
         tip: "Bezicne",
         trajanjeBaterije: 5.4,
-        cena: 114
+        cena: 25
     });
 
 const Katalog = () => {
-    document.title = 'Slusalice';
+    document.title = 'Narukvice';
 
     return (
         <Container>

@@ -7,6 +7,7 @@ import Header from './components/Header/Header';
 import HomePage from './pages/HomePage/HomePage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import SlusalicePage from './pages/Slusalice/SlusalicePage';
+import NarukvicePage from './pages/Narukvice/NarukvicePage.jsx';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/" exact component={HomePage}/>
           <Route path="/login" component={LoginPage}/>
           <Route path="/slusalice" component={SlusalicePage}/>
+          <Route path="/narukvice" component={NarukvicePage}/>
         </Switch>
       </div>
     </Router>

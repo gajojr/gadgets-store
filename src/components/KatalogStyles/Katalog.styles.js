@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { FaShoppingBasket } from "react-icons/fa";
+
 export const Container = styled.div `
     display: flex;
     flex-direction: column;
@@ -14,7 +16,8 @@ export const Proizvod = styled.article `
     padding: 10px;
     background-color: #000;
     color: #fff;
-    border: 2px solid green;
+    border: 2px solid #fff;
+    border-radius: 10px;
     flex: 1;
     min-width: 20%;
     display: flex;
@@ -46,4 +49,15 @@ export const H4 = styled.h4 `
     word-break: break-all;
     line-height: 2px;
     font-family: Verdana, sans-serif;
+`;
+
+export const FaShoppingBasketStyled = styled(FaShoppingBasket)
+`
+    align-self: flex-end;
+    transition: 1s all;
+    
+    &:hover {
+        cursor: pointer;
+        transform: rotate(360deg);
+    }
 `;

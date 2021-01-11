@@ -13,7 +13,7 @@ const MainSection = () => {
                     <StyledComponents.SectionText>Slusalice</StyledComponents.SectionText>
                 </StyledComponents.Article>
             </Link>
-            <Link to='/'>
+            <Link to='/narukvice'>
                 <StyledComponents.Article>
                     <StyledComponents.Image src={'/images/glavna_strana/smart-bracelet-demo.jpg'}/>
                     <StyledComponents.SectionText>Narukvice</StyledComponents.SectionText>

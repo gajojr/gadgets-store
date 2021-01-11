@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Katalog from '../../components/Slusalice/Katalog/Katalog.component';
+import Katalog from '../../components/Narukvice/Katalog/Katalog.component';
 import FilterMenu from '../../components/Slusalice/FilterMenu/FilterMenu.component';
 
-const SlusalicePage = () => {
+const NarukvicePage = () => {
     return ( 
         <React.Fragment >
             <Katalog/>
@@ -12,4 +12,4 @@ const SlusalicePage = () => {
     );
 }
 
-export default SlusalicePage;
+export default NarukvicePage;

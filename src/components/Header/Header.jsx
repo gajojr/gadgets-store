@@ -3,6 +3,7 @@ import * as StyledComponents from './Header.styles';
 
 import { BiMenu } from "react-icons/bi";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { FaShoppingBasket } from "react-icons/fa";
 
 const Header = () => {
     const [activeBar, setActiveBar] = useState(false);
@@ -13,10 +14,13 @@ const Header = () => {
                 {activeBar || document.body.clientWidth > 1024 ? 
                     <StyledComponents.Navigation>
                         <StyledComponents.StyledLink to="#">MASKICE</StyledComponents.StyledLink>
-                        <StyledComponents.StyledLink to="#">NARUKVICE</StyledComponents.StyledLink>
+                        <StyledComponents.StyledLink to="/narukvice">NARUKVICE</StyledComponents.StyledLink>
                         <StyledComponents.StyledLink to='/slusalice'>SLUSALICE</StyledComponents.StyledLink>
                         <StyledComponents.StyledLink to="#">DZOJSTICI</StyledComponents.StyledLink>
                         <StyledComponents.StyledLink to="#">PUNJACI</StyledComponents.StyledLink>
+                        <StyledComponents.StyledLink to="#">
+                            <FaShoppingBasket size={25}/>
+                        </StyledComponents.StyledLink>
                         {document.body.clientWidth < 1025 ? 
                             <StyledComponents.Icon onClick={() => setActiveBar(!activeBar)} style={{alignSelf: 'flex-end', color: 'white'}}><AiFillCloseCircle size={30}/></StyledComponents.Icon> : null}
                     </StyledComponents.Navigation> :

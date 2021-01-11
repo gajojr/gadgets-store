@@ -14,10 +14,12 @@ export const Header = styled.header `
 export const Navigation = styled.nav `
     display: flex;
     justify-content: space-around;
+    align-items: center;
     background-color: #333;
     flex-wrap: wrap;
 
     @media (max-width: 1024px) {
+        align-items: flex-start;
         flex-direction: column;
     }
 `;
