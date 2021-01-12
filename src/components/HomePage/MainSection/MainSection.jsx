@@ -19,13 +19,13 @@ const MainSection = () => {
                     <StyledComponents.SectionText>Narukvice</StyledComponents.SectionText>
                 </StyledComponents.Article>
             </Link>
-            <Link to='/'>
+            <Link to='/punjaci'>
                 <StyledComponents.Article>
                     <StyledComponents.Image src={'/images/glavna_strana/charger-demo.webp'}/>
                     <StyledComponents.SectionText>Punjaci</StyledComponents.SectionText>
                 </StyledComponents.Article>
             </Link>
-            <Link to='/'>
+            <Link to='/dzojstici'>
                 <StyledComponents.Article>
                     <StyledComponents.Image src={'/images/glavna_strana/joystick-demo.webp'}/>
                     <StyledComponents.SectionText>Dzojstici</StyledComponents.SectionText>
