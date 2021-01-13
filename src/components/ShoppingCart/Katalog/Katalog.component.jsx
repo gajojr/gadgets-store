@@ -6,10 +6,7 @@ import Article from './Article.component';
 
 const dummyData = new Array(4).fill({
         imgSrc: '/images/glavna_strana/charger-demo.webp',
-        proizvodjac: "Fushara",
-        model: "Njesra",
-        snaga: 20,
-        tip: "Zicni",
+        imeProizvoda: 'Neki kao telefon',
         cena: 25,
         kolicina: 1
     });
@@ -18,7 +15,7 @@ const Katalog = () => {
     document.title = 'Shoping korpa';
 
     return (
-        <Container>
+        <Container style={{alignSelf: 'center'}}>
             <H1>Katalog</H1>
             <Catalog>{dummyData.map((items, idx) => {
                 return <Article key={idx} details={items}/>

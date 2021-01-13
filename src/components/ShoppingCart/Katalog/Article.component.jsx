@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
-import { Proizvod, Image, H4 } from '../../KatalogStyles/Katalog.styles';
+import { Image, H4 } from '../../KatalogStyles/Katalog.styles';
+import {Proizvod} from './Article.styles';
 
 const Article = ({details}) => { 
     const [quantity, setQuantity] = useState(1);
@@ -13,13 +14,12 @@ const Article = ({details}) => {
     }, [quantity]);
 
     return (
-        <Proizvod style={{display: showItem ? 'flex' : 'none', maxWidth: '25%'}}>
+        <Proizvod style={{display: showItem ? 'flex' : 'none'}}>
             <Image src={details.imgSrc} alt={details.model}/>
-            <H4>Proizvodjac: {details.proizvodjac}</H4>
-            <H4>Model: {details.model}</H4>
-            <H4>Tip: {details.tip}</H4>
+            <H4>Ime proizvoda: {details.imeProizvoda}</H4>
             <H4>Cena: {details.cena}</H4>
             <H4>Kolicina: {quantity}</H4>
+            <H4>Ukupno: {quantity * details.cena}</H4>
             <div style={{display: 'flex', alignSelf: 'flex-end'}}>
                 <AiOutlinePlusCircle 
                     onClick={() => setQuantity(quantity => quantity + 1)} 
