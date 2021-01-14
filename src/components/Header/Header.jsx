@@ -19,6 +19,7 @@ const Header = () => {
             <StyledComponents.Header>
                 {activeBar || document.body.clientWidth > 1024 ? 
                     <StyledComponents.Navigation>
+                        <StyledComponents.StyledLink to="/" className={`${title === 'Gadgets store' ? 'active-link' : ''}`} onClick={() => setChange(!change)}>POCETNA</StyledComponents.StyledLink>
                         <StyledComponents.StyledLink to="/maskice" className={`${title === 'Maskice' ? 'active-link' : ''}`} onClick={() => setChange(!change)}>MASKICE</StyledComponents.StyledLink>
                         <StyledComponents.StyledLink to="/narukvice" className={`${title === 'Narukvice' ? 'active-link' : ''}`} onClick={() => setChange(!change)}>NARUKVICE</StyledComponents.StyledLink>
                         <StyledComponents.StyledLink to='/slusalice' className={`${title === 'Slusalice' ? 'active-link' : ''}`} onClick={() => setChange(!change)}>SLUSALICE</StyledComponents.StyledLink>

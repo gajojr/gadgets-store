@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import * as StyledComponents from './MainSection.styles';
 
 const MainSection = () => {
+    document.title = 'Gadgets store';
+
     return (
         <StyledComponents.Section>
             <Link to='/slusalice'>
