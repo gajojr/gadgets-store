@@ -1,18 +1,36 @@
 const express = require('express');
 const router = express.Router();
-const { Schema } = require('mongoose');
+const mongoose = require('mongoose');
 
-const dzojsticiSchema = new Schema({
+mongoose.connect('mongodb://localhost:27017/gadgets_store', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+
+const dzojsticiSchema = new mongoose.Schema({
+    imgSrc: String,
     proizvodjac: String,
     model: String,
     tip: String,
     cena: Number
 });
 
-const Dzojstik = mongoose.model('Dzojstik', dzojsticiSchema);
+const Dzojstik = mongoose.model('dzojstici', dzojsticiSchema);
 
-router.get('/', function(req, res) {
-    res.json('Welcome To Dzojstici');
+router.get('/', async function(req, res) {
+    try {
+        const result = await Dzojstik.find();
+        if (result) {
+            console.log("Articles:", result);
+            res.json(result);
+        } else {
+            console.log("no database result found");
+            res.sendStatus(404);
+        }
+    } catch (e) {
+        console.log(e);
+        res.sendStatus(500);
+    }
 });
 
 module.exports = router;
