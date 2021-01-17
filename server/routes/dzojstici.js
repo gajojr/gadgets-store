@@ -15,7 +15,7 @@ const dzojsticiSchema = new mongoose.Schema({
     cena: Number
 });
 
-const Dzojstik = mongoose.model('dzojstici', dzojsticiSchema);
+const Dzojstik = mongoose.model('Dzojstik', dzojsticiSchema, 'dzojstici');
 
 router.get('/', async function(req, res) {
     try {

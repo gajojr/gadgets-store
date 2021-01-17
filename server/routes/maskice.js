@@ -15,7 +15,7 @@ const maskiceSchema = new mongoose.Schema({
     cena: String
 });
 
-const Maskica = mongoose.model('maskice', maskiceSchema);
+const Maskica = mongoose.model('Maskica', maskiceSchema, 'maskice');
 
 router.get('/', async function(req, res) {
     try {

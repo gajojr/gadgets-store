@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import { Container, H1, Catalog } from '../../KatalogStyles/Katalog.styles';
 
@@ -6,26 +6,20 @@ import Article from './Article.component';
 
 const axios = require('axios');
 
-const dummyData = new Array(12).fill({
-        imgSrc: '/images/glavna_strana/smart-bracelet-demo.jpg',
-        proizvodjac: "Fushara",
-        model: "Njesra",
-        tip: "Bezicne",
-        trajanjeBaterije: 5.4,
-        cena: 25
-    });
-
-async function fetchNarukvica() {
-    try {
-        const response = await axios.get('http://localhost:3001/narukvice');
-        console.log(response.data);
-    } catch (error) {
-        console.error(error);
-    }
-}
-
 const Katalog = () => {
     document.title = 'Narukvice';
+
+    const [narukvice, setNarukvice] = useState([]);
+
+    async function fetchNarukvica() {
+        try {
+            const response = await axios.get('http://localhost:3001/narukvice');
+            setNarukvice(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     useEffect(() => {
         fetchNarukvica();
     }, []);
@@ -33,7 +27,7 @@ const Katalog = () => {
     return (
         <Container>
             <H1>Katalog</H1>
-            <Catalog>{dummyData.map((bracelets, idx) => {
+            <Catalog>{narukvice.map((bracelets, idx) => {
                 return <Article key={idx} details={bracelets}/>
             })}</Catalog>
         </Container>

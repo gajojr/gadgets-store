@@ -15,7 +15,7 @@ const punjaciSchema = new mongoose.Schema({
     cena: Number
 });
 
-const Punjac = mongoose.model('punjaci', punjaciSchema);
+const Punjac = mongoose.model('Punjac', punjaciSchema, 'punjaci');
 
 router.get('/', async function(req, res) {
     try {

@@ -15,7 +15,7 @@ const narukviceSchema = new mongoose.Schema({
     cena: String
 });
 
-const Narukvica = mongoose.model('narukvice', narukviceSchema);
+const Narukvica = mongoose.model('Narukvica', narukviceSchema, 'narukvice');
 
 router.get('/', async function(req, res) {
     try {

@@ -16,7 +16,7 @@ const slusaliceSchema = new mongoose.Schema({
     cena: Number
 });
 
-const Slusalice = mongoose.model('slusalice', slusaliceSchema);
+const Slusalice = mongoose.model('Slusalice', slusaliceSchema, 'slusalice');
 
 router.get('/', async function(req, res) {
     try {
