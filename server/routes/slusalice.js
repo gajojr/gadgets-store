@@ -22,7 +22,6 @@ router.get('/', async function(req, res) {
     try {
         const result = await Slusalice.find();
         if (result) {
-            console.log("Articles:", result);
             res.json(result);
         } else {
             console.log("no database result found");

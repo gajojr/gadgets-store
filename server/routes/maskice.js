@@ -21,7 +21,6 @@ router.get('/', async function(req, res) {
     try {
         const result = await Maskica.find();
         if (result) {
-            console.log("Articles:", result);
             res.json(result);
         } else {
             console.log("no database result found");
