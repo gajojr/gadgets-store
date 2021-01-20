@@ -10,7 +10,7 @@ mongoose.connect('mongodb://localhost:27017/gadgets_store', {
 const slusaliceSchema = new mongoose.Schema({
     imgSrc: String,
     proizvodjac: String,
-    model: Number,
+    model: String,
     tip: String,
     trajanjeBaterije: Number,
     cena: Number

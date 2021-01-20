@@ -12,7 +12,8 @@ function storeInLocalStorage(vrsta, details) {
 
     // prolazi kroz niz artikala da bi uporedio da li je zeljeni artikal(objekat) vec ubacen u niz
     for (const artikal of artikli) {
-        if (JSON.stringify(details) === JSON.stringify(artikal)) {
+        console.log('usao sam');
+        if (JSON.stringify({...details, kolicina: 1 }) === JSON.stringify(artikal)) {
             alert('Ovaj artikal je vec dodat u korpu, ako zelite da kupite vise od 1 mozete podesiti kolicinu pri narucivanju.');
             vecUbacen = true;
         }
@@ -20,7 +21,7 @@ function storeInLocalStorage(vrsta, details) {
 
     // ako artikal nije u nizu ubacujemo ga u niz zeljenih artikala te vrste
     if (!vecUbacen) {
-        let arr = [details];
+        let arr = [{...details, kolicina: 1 }];
         if (localStorage.getItem(vrsta)) {
             arr = [...JSON.parse(localStorage.getItem(vrsta)), details];
             localStorage.setItem(vrsta, JSON.stringify(arr));

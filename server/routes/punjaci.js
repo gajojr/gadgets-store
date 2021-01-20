@@ -10,6 +10,7 @@ mongoose.connect('mongodb://localhost:27017/gadgets_store', {
 const punjaciSchema = new mongoose.Schema({
     imgSrc: String,
     proizvodjac: String,
+    model: String,
     snaga: Number,
     tip: String,
     cena: Number

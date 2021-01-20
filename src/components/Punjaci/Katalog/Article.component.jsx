@@ -10,6 +10,7 @@ const Article = ({details}) => {
             <Image src={details.imgSrc} alt={details.model}/>
             <H4>Proizvodjac: {details.proizvodjac}</H4>
             <H4>Model: {details.model}</H4>
+            <H4>Snaga: {details.snaga} W</H4>
             <H4>Tip: {details.tip}</H4>
             <H4>Cena: {details.cena}</H4>
             <FaShoppingBasketStyled 
