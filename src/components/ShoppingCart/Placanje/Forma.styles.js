@@ -55,7 +55,7 @@ export const Select = styled.select `
     display: block;
 `;
 
-export const Sumbit = styled.input `
+export const Sumbit = styled.button `
     margin-top: 20px;
     border-radius: 20px;
     cursor: pointer;

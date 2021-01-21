@@ -5,8 +5,25 @@ import { Image, H4 } from '../../KatalogStyles/Katalog.styles';
 import { Proizvod } from './Article.styles';
 
 const Article = ({details}) => { 
-    const [quantity, setQuantity] = useState(1);
+    const [quantity, setQuantity] = useState(() => {
+        const vrsta = details.imgSrc.slice(8, details.imgSrc.lastIndexOf('/'));
+        const articles = JSON.parse(localStorage.getItem(vrsta));
+        if (articles) {
+            // prolazimo kroz niz artikala trazene vrste da vidimo da li artikal ima kolicinu vecu od 1
+            for (const article of articles) {
+                if(article.model === article.model) {
+                    // ako ima vracamo tu kolicinu
+                    return article.kolicina;
+                }
+            }
+        }
+
+        // default kolicina ako nema artikla u localStorageu
+        return 1;
+    });
+
     const [showItem, setShowItem] = useState(true);
+
     useEffect(() => {
         if (quantity < 1) {
             setShowItem(false);
@@ -24,15 +41,35 @@ const Article = ({details}) => {
                 <AiOutlinePlusCircle 
                     onClick={() => {
                         setQuantity(quantity => quantity + 1);
-                        const arr = JSON.parse(localStorage.getItem(details.imgSrc.slice(8, details.imgSrc.lastIndexOf('/'))));
-                        console.log("OVo sto sam sad napravio", arr);
+                        const vrsta = details.imgSrc.slice(8, details.imgSrc.lastIndexOf('/'));
+                        const notForChange = JSON.parse(localStorage.getItem(vrsta)).filter(article => article.model !== details.model);
+                        const articles = JSON.parse(localStorage.getItem(vrsta));
+                        console.log("OVo sto sam sad napravio", articles);
+                        for(const article of articles) {
+                            if(article.model === details.model) {
+                                localStorage.removeItem(vrsta);
+                                localStorage.setItem(vrsta, JSON.stringify([...notForChange, {...article, kolicina: article.kolicina + 1}]));
+                            }
+                        }
                     }} 
                     style={{cursor: 'pointer', marginRight: 10}} 
                     size={35} 
                     title='Povecaj kolicinu'
                 />
                 <AiOutlineMinusCircle 
-                    onClick={() => setQuantity(quantity => quantity - 1)} 
+                    onClick={() => {
+                        setQuantity(quantity => quantity - 1);
+                        const vrsta = details.imgSrc.slice(8, details.imgSrc.lastIndexOf('/'));
+                        const notForChange = JSON.parse(localStorage.getItem(vrsta)).filter(article => article.model !== details.model);
+                        const articles = JSON.parse(localStorage.getItem(vrsta));
+                        console.log("OVo sto sam sad napravio", articles);
+                        for(const article of articles) {
+                            if(article.model === details.model) {
+                                localStorage.removeItem(vrsta);
+                                localStorage.setItem(vrsta, JSON.stringify([...notForChange, {...article, kolicina: article.kolicina - 1}]));
+                            }
+                        }
+                    }} 
                     style={{cursor: 'pointer'}} 
                     size={35} 
                     title='Smanji kolicinu'
