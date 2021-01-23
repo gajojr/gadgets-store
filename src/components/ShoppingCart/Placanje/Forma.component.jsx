@@ -31,7 +31,7 @@ const Form = () => {
                 <Input type="text" id="brojUlice" placeholder="25" required/>
             </Info>
             <VerificationDiv>
-                <Image src={src} alt="Verification"/>
+                <Image id="verification-picture" src={src} alt="Verification"/>
                 <Label htmlFor="humanVerification">Sta vidite na slici?</Label>  
                 <Select name="human-verification" id="humanVerification">
                     <option value="lopta">lopta</option>

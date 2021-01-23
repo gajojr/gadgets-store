@@ -42,12 +42,17 @@ const Article = ({details}) => {
                     onClick={() => {
                         setQuantity(quantity => quantity + 1);
                         const vrsta = details.imgSrc.slice(8, details.imgSrc.lastIndexOf('/'));
+                        // niz koji sadrzi sve artikle osim onog koji sadrzi trazeni model
                         const notForChange = JSON.parse(localStorage.getItem(vrsta)).filter(article => article.model !== details.model);
+                        // niz koji sadrze sve artikle ove vrste
                         const articles = JSON.parse(localStorage.getItem(vrsta));
                         console.log("OVo sto sam sad napravio", articles);
                         for(const article of articles) {
                             if(article.model === details.model) {
+                                // sklonimo ga iz localStorage
                                 localStorage.removeItem(vrsta);
+                                // za ovu vrstu postavimo ceo prethodni niz bez trazenog artikla i na
+                                // kraju ubacimo trazeni artikal sa kolicinom povecanom za 1
                                 localStorage.setItem(vrsta, JSON.stringify([...notForChange, {...article, kolicina: article.kolicina + 1}]));
                             }
                         }

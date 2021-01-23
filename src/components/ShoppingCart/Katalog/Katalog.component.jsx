@@ -52,8 +52,6 @@ const Katalog = () => {
         console.log("All items", allItems);
     }, []);
 
-    document.title = 'Shoping korpa';
-
     return (
         <Container style={{alignSelf: 'center'}}>
             <H1>Korpa:</H1>

@@ -12,6 +12,7 @@ const narukvice = require('./routes/narukvice');
 const slusalice = require('./routes/slusalice');
 const dzojstici = require('./routes/dzojstici');
 const punjaci = require('./routes/punjaci');
+const porudzbine = require('./routes/porudzbine');
 
 const app = express();
 
@@ -34,6 +35,7 @@ app.use('/narukvice', narukvice);
 app.use('/slusalice', slusalice);
 app.use('/dzojstici', dzojstici);
 app.use('/punjaci', punjaci);
+app.use('/porudzbine', porudzbine);
 
 app.get('*', (req, res) => {
     res.sendFile('build/index.html', { root: global });
