@@ -10,12 +10,23 @@ mongoose.connect('mongodb://localhost:27017/gadgets_store', {
 const porudzbineSchema = new mongoose.Schema({
     ime: String,
     prezime: String,
-    email: String,
+    email: {
+        type: String,
+        trim: true,
+        lowercase: true
+    },
     telefon: String,
     grad: String,
     postanskiBroj: String,
     ulica: String,
-    brojUlice: Number
+    brojUlice: Number,
+    porudzbina: {
+        maskice: Array,
+        narukice: Array,
+        slusalice: Array,
+        dzojstici: Array,
+        punjaci: Array
+    }
 });
 
 const Porudzbine = mongoose.model('Porudzbine', porudzbineSchema, 'porudzbine');

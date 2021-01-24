@@ -1,8 +1,12 @@
 import React, {useEffect, useState} from 'react';
 
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
+import { FiTrash2 } from "react-icons/fi";
+
 import { Image, H4 } from '../../KatalogStyles/Katalog.styles';
 import { Proizvod } from './Article.styles';
+
+import { modifyLocalStorage } from '../../utils';
 
 const Article = ({details}) => { 
     const [quantity, setQuantity] = useState(() => {
@@ -27,6 +31,17 @@ const Article = ({details}) => {
     useEffect(() => {
         if (quantity < 1) {
             setShowItem(false);
+            // uzmi kljuc za localStorage
+            const vrsta = details.imgSrc.slice(8, details.imgSrc.lastIndexOf('/'));
+            // uzmi ceo niz artikala iz ove vrste osim ovog koji treba da se ukloni
+            const artikli = JSON.parse(localStorage.getItem(vrsta)).filter(artikal => artikal.model !== details.model);
+            // postavi isti kljuc da bude niz bez uklonjenog elementa
+            // ako uopste ima nesto u nizu, ako nema, uklanjamo kljuc iz localStoragea
+            if (artikli.length > 0) {
+                localStorage.setItem(vrsta, JSON.stringify(artikli));
+            } else {
+                localStorage.removeItem(vrsta);
+            }
         } 
     }, [quantity]);
 
@@ -41,21 +56,7 @@ const Article = ({details}) => {
                 <AiOutlinePlusCircle 
                     onClick={() => {
                         setQuantity(quantity => quantity + 1);
-                        const vrsta = details.imgSrc.slice(8, details.imgSrc.lastIndexOf('/'));
-                        // niz koji sadrzi sve artikle osim onog koji sadrzi trazeni model
-                        const notForChange = JSON.parse(localStorage.getItem(vrsta)).filter(article => article.model !== details.model);
-                        // niz koji sadrze sve artikle ove vrste
-                        const articles = JSON.parse(localStorage.getItem(vrsta));
-                        console.log("OVo sto sam sad napravio", articles);
-                        for(const article of articles) {
-                            if(article.model === details.model) {
-                                // sklonimo ga iz localStorage
-                                localStorage.removeItem(vrsta);
-                                // za ovu vrstu postavimo ceo prethodni niz bez trazenog artikla i na
-                                // kraju ubacimo trazeni artikal sa kolicinom povecanom za 1
-                                localStorage.setItem(vrsta, JSON.stringify([...notForChange, {...article, kolicina: article.kolicina + 1}]));
-                            }
-                        }
+                        modifyLocalStorage(details, details.imgSrc.slice(8, details.imgSrc.lastIndexOf('/')), '+');
                     }} 
                     style={{cursor: 'pointer', marginRight: 10}} 
                     size={35} 
@@ -64,20 +65,17 @@ const Article = ({details}) => {
                 <AiOutlineMinusCircle 
                     onClick={() => {
                         setQuantity(quantity => quantity - 1);
-                        const vrsta = details.imgSrc.slice(8, details.imgSrc.lastIndexOf('/'));
-                        const notForChange = JSON.parse(localStorage.getItem(vrsta)).filter(article => article.model !== details.model);
-                        const articles = JSON.parse(localStorage.getItem(vrsta));
-                        console.log("OVo sto sam sad napravio", articles);
-                        for(const article of articles) {
-                            if(article.model === details.model) {
-                                localStorage.removeItem(vrsta);
-                                localStorage.setItem(vrsta, JSON.stringify([...notForChange, {...article, kolicina: article.kolicina - 1}]));
-                            }
-                        }
+                        modifyLocalStorage(details, details.imgSrc.slice(8, details.imgSrc.lastIndexOf('/')), '-');
                     }} 
                     style={{cursor: 'pointer'}} 
                     size={35} 
                     title='Smanji kolicinu'
+                />
+                <FiTrash2
+                    onClick={() => setQuantity(0)} 
+                    style={{cursor: 'pointer'}} 
+                    size={35} 
+                    title='Ukloni artikal'
                 />
             </div>
         </Proizvod>

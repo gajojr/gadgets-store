@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const favicon = require('serve-favicon');
+const helmet = require('helmet');
 
 const index = require('./routes/index');
 const maskice = require('./routes/maskice');
@@ -24,6 +25,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'build')));
 app.use(cors());
+app.use(helmet());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

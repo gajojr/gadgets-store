@@ -11,14 +11,19 @@ const FormHandle = () => {
     const humanVerificationSelect = document.getElementById('humanVerification');
     const humanVerificationAnswer = humanVerificationSelect.options[humanVerificationSelect.selectedIndex].text;
 
-    if (!ime.value || !prezime.value || !email.value || !telefon.value || !grad.value || !postanskiBroj.value ||
-        !ulica.value || !brojUlice.value) {
+    if (!ime.value || !prezime.value || !email.value || !telefon.value || !grad.value || !postanskiBroj.value || !ulica.value || !brojUlice.value) {
         return alert('Sva polja moraju biti popunjena');
     }
 
-    console.log(humanVerification(humanVerificationAnswer));
+    // human verification
     if (!humanVerification(humanVerificationAnswer)) {
         return alert('Potvrda neuspesna');
+    }
+
+    // email span check
+    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!re.test(email.value)) {
+        return alert('Email nevazeci');
     }
 
     fetch('http://localhost:3001/porudzbine', {
@@ -34,9 +39,19 @@ const FormHandle = () => {
             grad: grad.value,
             postanskiBroj: postanskiBroj.value,
             ulica: ulica.value,
-            brojUlice: brojUlice.value
+            brojUlice: brojUlice.value,
+            porudzbina: {
+                maskice: localStorage.getItem('maskice'),
+                narukice: localStorage.getItem('narukvice'),
+                slusalice: localStorage.getItem('slusalice'),
+                dzojstici: localStorage.getItem('dzojstici'),
+                punjaci: localStorage.getItem('punjaci')
+            }
         }),
     });
+
+    // remove articles from localStorage after order is done
+    removeFromLocalStorage()
 
     window.location.reload();
 }
@@ -58,6 +73,14 @@ const humanVerification = humanVerificationAnswer => {
     }
 
     return humanVerificationAnswer === tipSlike;
+}
+
+const removeFromLocalStorage = () => {
+    localStorage.removeItem('maskice');
+    localStorage.removeItem('narukvice');
+    localStorage.removeItem('slusalice');
+    localStorage.removeItem('dzojstici');
+    localStorage.removeItem('punjaci');
 }
 
 export default FormHandle;
