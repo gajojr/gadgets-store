@@ -46,8 +46,6 @@ export const Image = styled.img `
 `;
 
 export const H4 = styled.h4 `
-    word-break: break-all;
-    line-height: 2px;
     font-family: Verdana, sans-serif;
 `;
 

@@ -14,7 +14,9 @@ const Article = ({details}) => {
             <H4>Tip: {details.tip}</H4>
             <H4>Cena: {details.cena}</H4>
             <FaShoppingBasketStyled 
-                onClick={() => storeInLocalStorage('punjaci', details)}
+                onClick={() => {
+                    storeInLocalStorage('punjaci', details);
+                }}
                 size={35} 
                 title='Dodaj u korpu'
             />

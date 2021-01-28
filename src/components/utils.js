@@ -12,7 +12,6 @@ function storeInLocalStorage(vrsta, details) {
 
     // prolazi kroz niz artikala da bi uporedio da li je zeljeni artikal(objekat) vec ubacen u niz
     for (const artikal of artikli) {
-        console.log('usao sam');
         if (JSON.stringify({...details, kolicina: 1 }) === JSON.stringify(artikal)) {
             alert('Ovaj artikal je vec dodat u korpu, ako zelite da kupite vise od 1 mozete podesiti kolicinu pri narucivanju.');
             vecUbacen = true;
@@ -28,6 +27,10 @@ function storeInLocalStorage(vrsta, details) {
         } else {
             localStorage.setItem(vrsta, JSON.stringify(arr));
         }
+
+        // pokazi notifikaciju korisniku kad kupi artikal
+        document.getElementById('alert').style.display = 'flex';
+        setTimeout(notificationMove, 2000);
     }
 }
 
@@ -45,6 +48,25 @@ export function modifyLocalStorage(details, vrsta, znakOperacije) {
             // kraju ubacimo trazeni artikal sa kolicinom povecanom ili smanjenom za 1
             // u zavisnosnti od znakaOperacije
             localStorage.setItem(vrsta, JSON.stringify([...notForChange, {...article, kolicina: znakOperacije === '+' ? article.kolicina + 1 : article.kolicina - 1 }]));
+        }
+    }
+}
+
+function notificationMove() {
+    const elem = document.getElementById('alert');
+    const currentPos = elem.getBoundingClientRect().left;
+    const elemWidth = elem.offsetWidth;
+    const id = setInterval(frame, 10);
+    let pos = currentPos;
+
+    function frame() {
+        if (pos > currentPos + elemWidth) {
+            clearInterval(id);
+            // potrebno da notification div ne bi ostao na kraju stranice, tj. prosirio stranicu
+            document.getElementById('alert').style.display = 'none';
+        } else {
+            pos += 5;
+            elem.style.left = pos + 'px';
         }
     }
 }

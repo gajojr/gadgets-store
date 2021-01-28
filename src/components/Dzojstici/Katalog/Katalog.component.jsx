@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { Container, H1, Catalog } from '../../KatalogStyles/Katalog.styles';
+import { Alert, Message, CloseIcon } from '../../KatalogStyles/PushNotification.styles';
 
 import Article from './Article.component';
 
@@ -29,6 +30,14 @@ const Katalog = () => {
             <Catalog>{dzojstici.map((joysticks, idx) => {
                 return <Article key={idx} details={joysticks}/>
             })}</Catalog>
+            <Alert id='alert' style={{display: 'none'}}>
+                <Message>
+                    Artikal dodat u korpu
+                </Message>
+                <CloseIcon onClick={() => {
+                    document.getElementById('alert').style.display = 'none';
+                }}/>
+            </Alert>
         </Container>
     );
 }
