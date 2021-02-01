@@ -2,6 +2,10 @@
     "name": "express-react-starter",
     "version": "0.1.0",
     "private": true,
+    "engines": {
+        "node": "14.x",
+        "npm": "6.x"
+    },
     "dependencies": {
         "@sendgrid/mail": "^7.4.2",
         "axios": "^0.21.1",
@@ -31,7 +35,7 @@
     },
     "scripts": {
         "start": "concurrently \"react-scripts start\" \"nodemon server/server.js\"",
-        "build": "react-scripts build && move build server",
+        "build": "concurrently \"react-scripts start\" \"nodemon server/server.js\"",
         "test": "react-scripts test --env=jsdom",
         "eject": "react-scripts eject"
     },
