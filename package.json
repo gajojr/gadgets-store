@@ -35,7 +35,7 @@
     },
     "scripts": {
         "start": "concurrently \"react-scripts start\" \"nodemon server/server.js\"",
-        "build": "concurrently \"react-scripts start\" \"nodemon server/server.js\"",
+        "build": "node ./server/server.js",
         "test": "react-scripts test --env=jsdom",
         "eject": "react-scripts eject"
     },
