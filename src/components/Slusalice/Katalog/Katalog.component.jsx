@@ -14,7 +14,7 @@ const Katalog = () => {
 
     async function fetchSlusalica() {
         try {
-            const response = await axios.get('http://localhost:3001/slusalice');
+            const response = await axios.get('/slusalice');
             setSlusalice(response.data);
         } catch (error) {
             console.error(error);

@@ -52,9 +52,9 @@ export const H4 = styled.h4 `
 export const FaShoppingBasketStyled = styled(FaShoppingBasket)
 `
     align-self: flex-end;
-    transition: 1s all;
+    transition: .2s all;
     
-    &:hover {
+    &:active {
         cursor: pointer;
         transform: rotate(360deg);
     }

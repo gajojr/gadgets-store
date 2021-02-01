@@ -54,19 +54,21 @@ export function modifyLocalStorage(details, vrsta, znakOperacije) {
 
 function notificationMove() {
     const elem = document.getElementById('alert');
-    const currentPos = elem.getBoundingClientRect().left;
-    const elemWidth = elem.offsetWidth;
-    const id = setInterval(frame, 10);
-    let pos = currentPos;
+    if (elem) {
+        const currentPos = elem.getBoundingClientRect().left;
+        const elemWidth = elem.offsetWidth;
+        const id = setInterval(frame, 10);
+        let pos = currentPos;
 
-    function frame() {
-        if (pos > currentPos + elemWidth) {
-            clearInterval(id);
-            // potrebno da notification div ne bi ostao na kraju stranice, tj. prosirio stranicu
-            document.getElementById('alert').style.display = 'none';
-        } else {
-            pos += 5;
-            elem.style.left = pos + 'px';
+        function frame() {
+            if (pos > currentPos + elemWidth) {
+                clearInterval(id);
+                // potrebno da notification div ne bi ostao na kraju stranice, tj. prosirio stranicu
+                document.getElementById('alert').style.display = 'none';
+            } else {
+                pos += 5;
+                elem.style.left = pos + 'px';
+            }
         }
     }
 }

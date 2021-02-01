@@ -14,7 +14,7 @@ const Katalog = () => {
 
     async function fetchMaskica() {
         try {
-            const response = await axios.get('http://localhost:3001/maskice');
+            const response = await axios.get('/maskice');
             setMaskice(response.data);
         } catch (error) {
             console.error(error);

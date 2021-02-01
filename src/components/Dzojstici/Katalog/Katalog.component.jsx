@@ -13,7 +13,7 @@ const Katalog = () => {
 
     async function fetchDzojstika() {
         try {
-            const response = await axios.get('http://localhost:3001/dzojstici');
+            const response = await axios.get('/dzojstici');
             setDzojstici(response.data);
         } catch (error) {
             console.error(error);

@@ -4,6 +4,8 @@
  * Module dependencies.
  */
 
+require('dotenv').config();
+
 const app = require('./app');
 const debug = require('debug')('express-react:server');
 const http = require('http');

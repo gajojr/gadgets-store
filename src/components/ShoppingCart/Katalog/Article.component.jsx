@@ -15,7 +15,7 @@ const Article = ({details}) => {
         if (articles) {
             // prolazimo kroz niz artikala trazene vrste da vidimo da li artikal ima kolicinu vecu od 1
             for (const article of articles) {
-                if(article.model === article.model) {
+                if(article.model === details.model) {
                     // ako ima vracamo tu kolicinu
                     return article.kolicina;
                 }
@@ -52,7 +52,7 @@ const Article = ({details}) => {
             <H4>Cena artikla: {details.cena}</H4>
             <H4>Kolicina: {quantity}</H4>
             <H4>Ukupno: {quantity * details.cena}</H4>
-            <div style={{display: 'flex', alignSelf: 'flex-end'}}>
+            <div style={{alignSelf: 'flex-end', padding: '3px', borderRadius: '5px', backgroundColor: 'grey'}}>
                 <AiOutlinePlusCircle 
                     onClick={() => {
                         setQuantity(quantity => quantity + 1);
@@ -73,7 +73,7 @@ const Article = ({details}) => {
                 />
                 <FiTrash2
                     onClick={() => setQuantity(0)} 
-                    style={{cursor: 'pointer'}} 
+                    style={{cursor: 'pointer', marginLeft: 10}} 
                     size={35} 
                     title='Ukloni artikal'
                 />

@@ -1,8 +1,11 @@
+require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/gadgets_store', {
+const { sendWelcomeEmail } = require('../emails/account');
+
+mongoose.connect(process.env.MONGODB_PRODUCTION_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -34,10 +37,10 @@ const Porudzbine = mongoose.model('Porudzbine', porudzbineSchema, 'porudzbine');
 router.post('/', async function(req, res) {
     try {
         const informacijeOPorudzbini = req.body;
-
         await Porudzbine.create({...informacijeOPorudzbini });
-    } catch (e) {
-        console.log(e);
+        sendWelcomeEmail(informacijeOPorudzbini.email, informacijeOPorudzbini.ime);
+    } catch (err) {
+        console.log(err);
         res.sendStatus(500);
     }
 });

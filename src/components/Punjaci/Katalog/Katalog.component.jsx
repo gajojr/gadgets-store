@@ -14,7 +14,7 @@ const Katalog = () => {
 
     async function fetchPunjaca() {
         try {
-            const response = await axios.get('http://localhost:3001/punjaci');
+            const response = await axios.get('/punjaci');
             setPunjaci(response.data);
         } catch (error) {
             console.error(error);

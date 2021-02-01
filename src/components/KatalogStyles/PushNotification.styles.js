@@ -6,7 +6,7 @@ export const Alert = styled.div `
     background-color: #95E894;
     padding: 20px 40px;
     width: 20%;
-    position: absolute;
+    position: absolute; 
     right: 0px;
     top: 10px;
     border-radius: 4px;
