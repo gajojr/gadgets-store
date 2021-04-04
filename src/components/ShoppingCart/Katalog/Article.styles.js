@@ -7,7 +7,7 @@ export const Proizvod = styled.article `
     border: 2px solid #fff;
     border-radius: 10px;
     flex: 1;
-    min-width: 20%;
+    min-width: 300px;
     max-width: 25%;
     display: flex;
     flex-direction: column;
